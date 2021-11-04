@@ -6,8 +6,11 @@ namespace beta_domashnee_4
     {
         static void Main(string[] args)
         {
+            int n;
             Console.WriteLine("Одномерный массив");
-            double[] myArray = new double[10];
+            Console.WriteLine("Введите количество элементов массива");
+            n = Convert.ToInt32(Console.ReadLine());
+            double[] myArray = new double[n];
             Random random = new Random();
             completionarray(myArray, random);//заполнение массива рандомными числами
             conclusionarray(myArray);//вывод массива
@@ -20,7 +23,7 @@ namespace beta_domashnee_4
             //сжатие массива по правилам из задания
             Console.WriteLine("Сжатый массив:");
             modulArray(myArray);
-            Console.WriteLine("Двумерный массив");
+            
 
         }
 
@@ -78,6 +81,7 @@ namespace beta_domashnee_4
 
         private static void conclusionarray(double[] myArray)
         {
+            Console.WriteLine("Вывод одномерного массива:");
             for (int i = 0; i < myArray.GetLength(0); i++)
             {
                 Console.WriteLine(myArray[i]);
