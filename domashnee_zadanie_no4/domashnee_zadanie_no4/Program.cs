@@ -6,10 +6,18 @@ namespace beta_domashnee_4
     {
         static void Main(string[] args)
         {
-            int n;
+            int n = 0;
             Console.WriteLine("Одномерный массив");
-            Console.WriteLine("Введите количество элементов массива");
-            n = Convert.ToInt32(Console.ReadLine());
+            
+            while (n < 1)
+            {
+                Console.WriteLine("Введите количество элементов массива (n>0):");
+                n = Convert.ToInt32(Console.ReadLine());
+                if(n<1)
+                {
+                    Console.WriteLine("Данные введены некорректно");
+                }
+            }
             double[] myArray = new double[n];
             Random random = new Random();
             completionarray(myArray, random);//заполнение массива рандомными числами
