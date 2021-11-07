@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections;
 namespace domashnee_zadanie_no4_b_
 {
     class Program
@@ -21,7 +21,28 @@ namespace domashnee_zadanie_no4_b_
             int[,] myMatrix = new int[n, n];
             completionarray(n, myMatrix);
             conclusionarray(n, myMatrix);
-            Console.WriteLine("Произведения элементов в тех строках, которые не содержат отрицательных элементов");
+            task1(n, myMatrix);
+            Console.WriteLine("Максимум среди сумм элементов диагоналей, параллельных главной диагонали матрицы");
+            ArrayList list = new ArrayList();
+
+            for (int i = 0; i < myMatrix.GetLength(0) - 1; i++)
+            {
+                int sum1 = 0, sum2 = 0;
+                for (int j = i + 1; j < myMatrix.GetLength(0); j++)
+                {
+                    sum1 += myMatrix[j - i - 1, j];
+                    sum2 += myMatrix[j, j - i - 1];
+                }
+                list.Add(sum1);
+                list.Add(sum2);
+            }
+            Console.WriteLine("\nMax: " + ListMax(list));
+
+        }
+
+        private static void task1(int n, int[,] myMatrix)
+        {
+            Console.WriteLine("Произведения элементов в тех строках, которые не содержат отрицательных элементов:");
 
             for (int i = 0; i < n; i++)
             {
@@ -38,6 +59,11 @@ namespace domashnee_zadanie_no4_b_
                 {
                     Console.WriteLine($"Произведение элементов в {i + 1} строке: {k}");
                 }
+                else
+                {
+                    Console.WriteLine($"Строка {i + 1} содержит отрицательные элементы");
+                }
+                
             }
         }
 
@@ -58,6 +84,14 @@ namespace domashnee_zadanie_no4_b_
                     Console.Write("{0}\t", myMatrix[i, j]);
                 Console.WriteLine();
             }
+        }
+        static int ListMax(ArrayList list)
+        {
+            int result = (int)list[0];
+            for (int i = 1; i < list.Count; i++)
+                if ((int)list[i] > result)
+                    result = (int)list[i];
+            return result;
         }
     }
 }
