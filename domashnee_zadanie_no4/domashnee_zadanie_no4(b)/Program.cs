@@ -24,7 +24,12 @@ namespace domashnee_zadanie_no4_b_
             task1(n, myMatrix);
             Console.WriteLine("Максимум среди сумм элементов диагоналей, параллельных главной диагонали матрицы");
             ArrayList list = new ArrayList();
+            summmatrix(myMatrix, list);
 
+        }
+
+        private static void summmatrix(int[,] myMatrix, ArrayList list)
+        {
             for (int i = 0; i < myMatrix.GetLength(0) - 1; i++)
             {
                 int sum1 = 0, sum2 = 0;
@@ -37,7 +42,6 @@ namespace domashnee_zadanie_no4_b_
                 list.Add(sum2);
             }
             Console.WriteLine("\nMax: " + ListMax(list));
-
         }
 
         private static void task1(int n, int[,] myMatrix)
